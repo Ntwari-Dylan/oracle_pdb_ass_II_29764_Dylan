@@ -223,7 +223,7 @@ The screenshot is stored in:
 oem_dashboard/
 ```
 
----
+
 
 # Challenges Faced
 
@@ -239,32 +239,5 @@ Task 1 also required some learning because I was still getting familiar with Ora
 
 Task 2 became easier because I had already understood the basic PDB operations from Task 1.
 
-```
 
-# Integrity Statement
 
-I confirm that this assignment represents my own work.
-
-I performed the Oracle tasks myself and the screenshots in this repository are from my own Oracle environment.
-
----
-
-# Submission Details
-
-**Issues Encountered:** Yes
-
-**PDB Name Created:** `dy_pdb_29764`
-
-**Repository Link:** https://github.com/Ntwari-Dylan/oracle_pdb_ass_II_29764_Dylan
-
----
-
-# Conclusion
-
-The practical Oracle tasks were completed successfully.
-
-I created the main PDB and user, created and deleted the temporary PDB, and configured Oracle Enterprise Manager.
-
-The OEM setup took the most troubleshooting because of the login and container name problems, but I eventually got the dashboard working.
-
-The assignment helped me understand more about Oracle PDBs, containers, users, PDB management, and Oracle Enterprise Manager.
