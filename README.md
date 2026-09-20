@@ -2,99 +2,269 @@
 
 ## Student Information
 
-**Name:** Ishimwe Ntwari Dylan
-**Student ID:** 29764
-**Course:** Database Development with PL/SQL (INSY 8311)
+**Name:** Ishimwe Ntwari Dylan  
+**Student ID:** 29764  
+**Course:** Database Development with PL/SQL (INSY 8311)  
 **Assignment:** Individual Assignment II – Oracle Pluggable Databases (PDB) Management
+
+---
 
 ## Overview
 
-This assignment was about working with Oracle Pluggable Databases (PDBs). I worked on creating a PDB, creating and deleting a temporary PDB, and setting up Oracle Enterprise Manager (EM Express).
+This assignment was about working with Oracle Pluggable Databases (PDBs) using Oracle Database.
 
-I also documented the work using screenshots and organized the evidence in this GitHub repository.
+During the assignment, I worked on:
+
+- Creating a new PDB
+- Creating and deleting a temporary PDB
+- Creating a user inside the PDB
+- Checking the PDB status
+- Setting up Oracle Enterprise Manager (EM Express)
+- Troubleshooting the OEM login
+- Documenting the work using screenshots
+- Organizing the evidence in a public GitHub repository
+
+---
 
 ## Oracle Environment
 
-* **Oracle Database:** 21c Enterprise Edition
-* **EM Express HTTPS Port:** 5500
-* **Main PDB:** `dy_pdb_29764`
-* **Main PDB User:** `dylan_plsqlauca_29764`
-* **Temporary PDB:** `dy_to_delete_pdb_29764`
+- **Oracle Database:** 21c Enterprise Edition
+- **Main PDB:** `dy_pdb_29764`
+- **Main PDB User:** `dylan_plsqlauca_29764`
+- **Temporary PDB:** `dy_to_delete_pdb_29764`
+- **EM Express HTTPS Port:** `5500`
+- **EM Express URL:** `https://localhost:5500/em`
 
-## Task 1 – Create a New PDB
+---
 
-For Task 1, I created the PDB named `dy_pdb_29764`.
+# Task 1 – Create a New PDB
 
-After creating it, I opened the PDB and checked its status to make sure it was in **READ WRITE** mode. I also switched into the PDB and verified the user `DYLAN_PLSQLAUCA_29764`.
+For Task 1, I created my main Pluggable Database using the required naming format.
 
-This was my first task with PDBs, so I had to understand how the CDB and PDB containers work and how to switch between them.
+### PDB Created
 
-The screenshots for this task are included in the repository.
+```text
+dy_pdb_29764
+```
 
-## Task 2 – Create and Delete a PDB
+After creating the PDB, I opened it and checked that it was in **READ WRITE** mode.
 
-For Task 2, I created a temporary PDB called `dy_to_delete_pdb_29764`.
+I then switched into the PDB and checked the user created inside it.
 
-I checked that the PDB was created successfully. After that, I deleted it completely using the required command:
+### User Created
+
+```text
+DYLAN_PLSQLAUCA_29764
+```
+
+The user was successfully created inside my PDB and verified after switching to the PDB.
+
+This was my first time working with PDBs in this assignment, so I had to learn how the CDB and PDB containers work and how to move between them.
+
+### Task 1 Result
+
+The main PDB was successfully created, opened, and verified.
+
+I have **3 screenshots** for Task 1 as evidence.
+
+The screenshots are stored in:
+
+```text
+pdb_creation/
+```
+
+---
+
+# Task 2 – Create and Delete a PDB
+
+For Task 2, I created another PDB that was only used for testing the creation and deletion process.
+
+### Temporary PDB
+
+```text
+dy_to_delete_pdb_29764
+```
+
+First, I created the temporary PDB and checked that it existed.
+
+After confirming that it was created successfully, I deleted it using:
 
 ```sql
 DROP PLUGGABLE DATABASE dy_to_delete_pdb_29764 INCLUDING DATAFILES;
 ```
 
-Finally, I checked the PDB list again to confirm that the temporary PDB was no longer there.
+After deleting it, I checked the PDB list again to confirm that the temporary PDB was no longer present.
+
+### Task 2 Result
+
+The temporary PDB was successfully:
+
+1. Created
+2. Verified
+3. Deleted
+4. Confirmed as no longer existing
 
 Task 2 was easier for me after completing Task 1 because I already understood the basic PDB commands and how to check the PDB status.
 
-The screenshots for the creation, checking, and deletion of the temporary PDB are included in the repository.
+I have **4 screenshots** for Task 2 as evidence.
 
-## Task 3 – Oracle Enterprise Manager (OEM)
+The screenshots are stored in:
 
-For Task 3, I configured Oracle Enterprise Manager Database Express.
+```text
+pdb_deletion/
+```
 
-The EM Express HTTPS port was **5500**, so I accessed it through:
+---
 
-`https://localhost:5500/em`
+# Task 3 – Oracle Enterprise Manager (OEM)
 
-At first, I had some problems logging in. I was mixing up the container name during the login, and the login page kept rejecting or refreshing the login.
+For Task 3, I configured **Oracle Enterprise Manager Database Express (EM Express)**.
 
-I checked the EM Express configuration and found that the global EM Express port was not enabled. I enabled it and also made sure that the required EM Express role was available to the `SYSTEM` user.
+First, I checked the HTTPS port using:
 
-After fixing the configuration and using the correct container name, I was able to log in successfully using:
+```sql
+SELECT DBMS_XDB_CONFIG.GETHTTPSPORT() FROM DUAL;
+```
 
-* **Username:** SYSTEM
-* **Container Name:** DY_PDB_29764
+The result was:
 
-The OEM dashboard then opened and showed my Oracle environment and the PDB `DY_PDB_29764`.
+```text
+5500
+```
 
-A screenshot of the working OEM dashboard is included in the `oem_dashboard` folder.
+I then opened EM Express using:
 
-## Challenges Faced
+```text
+https://localhost:5500/em
+```
 
-The main challenge for me was Task 3. The OEM login did not work at first because I was using the wrong container name and I also had to check the EM Express configuration.
+At first, Chrome showed a certificate warning. I continued to the localhost page and the Oracle Enterprise Manager login page appeared.
 
-I spent some time troubleshooting the login and checking the EM Express settings. After enabling the global EM Express port and using the correct PDB container name, the login worked and I was able to access the dashboard.
+---
 
-Task 1 also required some learning because I was still getting familiar with PDBs, containers, and the commands used to create and open a PDB.
+## OEM Login Problem
 
-## Evidence
+Task 3 was the hardest part for me.
 
-The screenshots are organized into the following folders:
+At first, I tried logging in with `SYS`, but the login kept being refreshed.
 
-* `pdb_creation/` – evidence for PDB creation
-* `pdb_deletion/` – evidence for creating and deleting the temporary PDB
-* `oem_dashboard/` – OEM dashboard screenshot
-* `screenshots/` – additional screenshots/evidence
+I also had a problem with the **container name** because I was mixing up the container name during the login.
 
-## Integrity Statement
+I checked the EM Express configuration and found that the global EM Express port was disabled.
 
-I confirm that this assignment represents my own work and that I performed the Oracle tasks myself. The screenshots in this repository are from my own Oracle environment.
+I enabled it using:
 
-## Submission Details
+```sql
+EXEC DBMS_XDB_CONFIG.SETGLOBALPORTENABLED(TRUE);
+```
+
+I also checked the available EM Express roles:
+
+```text
+EM_EXPRESS_ALL
+EM_EXPRESS_BASIC
+```
+
+The `SYSTEM` user did not originally have the EM Express role, so I granted:
+
+```sql
+GRANT EM_EXPRESS_BASIC TO SYSTEM;
+```
+
+I also verified that the `SYSTEM` user already had the DBA role.
+
+During the troubleshooting, the `SYS` account had also been locked because of failed login attempts, so I unlocked it with:
+
+```sql
+ALTER USER SYS ACCOUNT UNLOCK;
+```
+
+I then verified the SYS password using:
+
+```sql
+CONNECT SYS AS SYSDBA
+```
+
+After fixing the configuration and using the correct container name, I was finally able to log in successfully.
+
+---
+
+## Successful OEM Login
+
+**Username:**
+
+```text
+SYSTEM
+```
+
+**Container Name:**
+
+```text
+DY_PDB_29764
+```
+
+The OEM dashboard successfully opened and showed:
+
+```text
+ORCL / DY_PDB_29764 (21.3.0.0.0)
+```
+
+This confirmed that EM Express was working with my PDB.
+
+### Task 3 Result
+
+The OEM dashboard was successfully accessed and verified.
+
+I have **1 screenshot** showing the working OEM dashboard.
+
+The screenshot is stored in:
+
+```text
+oem_dashboard/
+```
+
+---
+
+# Challenges Faced
+
+The biggest challenge I faced was Task 3.
+
+The OEM login took some time because I was mixing up the container name. The login page kept rejecting the login, so I had to check different parts of the EM Express configuration.
+
+I found that the global EM Express port was not enabled, and the `SYSTEM` user also needed the EM Express role.
+
+After enabling the global port, granting the required role, and using the correct container name, I was finally able to log in and see the OEM dashboard.
+
+Task 1 also required some learning because I was still getting familiar with Oracle PDBs, CDBs, containers, and the commands used to create and open a PDB.
+
+Task 2 became easier because I had already understood the basic PDB operations from Task 1.
+
+```
+
+# Integrity Statement
+
+I confirm that this assignment represents my own work.
+
+I performed the Oracle tasks myself and the screenshots in this repository are from my own Oracle environment.
+
+---
+
+# Submission Details
 
 **Issues Encountered:** Yes
+
 **PDB Name Created:** `dy_pdb_29764`
-**Repository Link:** https://github.com/Ntwari-Dylan/oracle_pdb_ass_II_29764_Dylan.git
 
-## Conclusion
+**Repository Link:** https://github.com/Ntwari-Dylan/oracle_pdb_ass_II_29764_Dylan
 
-All four tasks were completed. I created and managed the PDB, created and deleted the temporary PDB, configured and accessed Oracle Enterprise Manager, and documented the work in this GitHub repository.
+---
+
+# Conclusion
+
+The practical Oracle tasks were completed successfully.
+
+I created the main PDB and user, created and deleted the temporary PDB, and configured Oracle Enterprise Manager.
+
+The OEM setup took the most troubleshooting because of the login and container name problems, but I eventually got the dashboard working.
+
+The assignment helped me understand more about Oracle PDBs, containers, users, PDB management, and Oracle Enterprise Manager.
