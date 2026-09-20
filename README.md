@@ -2,7 +2,7 @@
 
 ## Student Information
 
-**Name:** Dylan
+**Name:** Ishimwe Ntwari Dylan
 **Student ID:** 29764
 **Course:** Database Development with PL/SQL (INSY 8311)
 **Assignment:** Individual Assignment II – Oracle Pluggable Databases (PDB) Management
@@ -93,7 +93,7 @@ I confirm that this assignment represents my own work and that I performed the O
 
 **Issues Encountered:** Yes
 **PDB Name Created:** `dy_pdb_29764`
-**Repository Link:** [Paste your GitHub repository link here]
+**Repository Link:** https://github.com/Ntwari-Dylan/oracle_pdb_ass_II_29764_Dylan.git
 
 ## Conclusion
 
