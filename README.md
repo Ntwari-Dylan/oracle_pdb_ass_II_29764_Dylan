@@ -194,7 +194,7 @@ After fixing the configuration and using the correct container name, I was final
 **Username:**
 
 ```text
-SYSTEM
+DYLAN_PLSQLAUCA_29764
 ```
 
 **Container Name:**
